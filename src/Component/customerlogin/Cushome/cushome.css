@@ -13,6 +13,9 @@
     border-radius: 30px;
    }
   
+.shopitem{
+  max-width: 84%;
+}
   
   @media (max-width: 768px) {
     /* Apply these styles for screens with a minimum width of 768px (tablets and larger) */
@@ -25,8 +28,8 @@
 }
 @media screen and (max-width: 900px){
   .shopitem {
-    margin-right: 11em;
-    margin-left: 0.5em;
+    margin: 0 auto;
+    width: 90%;
   }
   .shopitem ul{
     padding-left: 0em;
