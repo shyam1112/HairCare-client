@@ -81,7 +81,9 @@ function Cushome() {
 
                     <TimePicker onChange={onChange} value={value} />
                     </div>
-                    <Button variant="primary">Send request</Button>{' '}
+                    <div className='btnreq'>
+                      <button>Send request</button>{' '}
+                    </div>
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>

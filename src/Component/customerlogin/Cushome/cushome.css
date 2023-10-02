@@ -16,6 +16,16 @@
 .shopitem{
   max-width: 84%;
 }
+.btnreq button{
+  background-color: rgb(28, 82, 207);
+  color: white;
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 7px;
+}
+.timepicker{
+  display: block;
+}
   
   @media (max-width: 768px) {
     /* Apply these styles for screens with a minimum width of 768px (tablets and larger) */
