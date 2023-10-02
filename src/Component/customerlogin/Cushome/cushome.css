@@ -1,0 +1,25 @@
+.cushome{
+    margin-top: 1em;
+}
+
+.search{
+    margin: 50px;
+    width: 53%;
+    align-items: center;
+    display: flex;
+    margin-left: 21%;
+    padding: 10px;
+    border: 2px solid rgb(46, 45, 45);
+    border-radius: 30px;
+   }
+  
+  
+  @media (max-width: 768px) {
+    /* Apply these styles for screens with a minimum width of 768px (tablets and larger) */
+    .search {
+      margin-left: 50px; /* Restore the original margin */
+      width: 16rem ;/* Restore the original width */
+      display: inline-block; /* Restore the original flex direction */
+      height: 40px;
+    }
+}

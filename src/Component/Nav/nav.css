@@ -1,0 +1,45 @@
+
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.navbar .prosign li{
+  float: right;
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.navbar li a:hover:not(.active) {
+  background-color: #79c3d8;
+  color: black;
+}
+
+.navbar .active {
+  background-color: #04AA6D;
+  margin-left: 15rem;
+}
+
+@media screen and (max-width:900px) {
+    .navbar .active{
+        margin-left: 0rem;
+        display: block;
+    }
+}

@@ -1,0 +1,55 @@
+/* TopNav.css */
+
+.timepicker{
+margin-bottom: 1em ;
+}
+
+.shopitem{
+  margin-left: 8em;
+  margin-right: 8em;
+}
+  
+ .cusnavbar ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #8cbcde;
+  }
+  
+ .cusnavbar ul.topnav li {
+    float: left;
+  }
+  
+  .cusnavbar ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+.cusnavbar   ul.topnav li a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+ .cusnavbar ul.topnav li a.active {
+    background-color: #6ed6ae;
+    color: #111;
+  }
+  
+ .cusnavbar ul.topnav li.right {
+    float: right;
+  }
+  
+  @media screen and (max-width: 600px) {
+  .cusnavbar  ul.topnav li.right,
+  .cusnavbar  ul.topnav li {
+      float: none;
+    }
+    .shopitem{
+      margin-right: 3em;
+    }
+      
+  }
+  
