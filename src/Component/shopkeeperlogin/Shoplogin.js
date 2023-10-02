@@ -37,7 +37,7 @@ const Cus = () => {
             });
         } else {
         
-            let result= await fetch('http://localhost:4000/shoplogin',{
+            let result= await fetch('https://haircare.onrender.com/shoplogin',{
                 method:'post',
                 body:JSON.stringify({email,pass}),
                 headers:{

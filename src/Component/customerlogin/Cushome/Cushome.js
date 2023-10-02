@@ -21,7 +21,7 @@ function Cushome() {
 
   const getData = async () => {
     try {
-      let result = await fetch('http://localhost:4000/getshopdata');
+      let result = await fetch('https://haircare.onrender.com/getshopdata');
       if (!result.ok) {
         throw new Error('Network response was not ok');
       }
@@ -39,7 +39,7 @@ function Cushome() {
     let key = event.target.value;
     if (key) {
 
-      let result = await fetch(`http://localhost:4000/search/${key}`);
+      let result = await fetch(`https://haircare.onrender.com/search/${key}`);
       result = await result.json();
       if (result) {
         setData(result);

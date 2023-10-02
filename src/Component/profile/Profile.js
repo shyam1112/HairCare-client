@@ -20,7 +20,7 @@ export default function Profile() {
 
     const getData = async () => {
         try {
-            let result = await fetch(`http://localhost:4000/profile/${auth}`);
+            let result = await fetch(`https://haircare.onrender.com/profile/${auth}`);
             if (!result.ok) {
                 throw new Error(`Fetch error: ${result.status}`);
             }

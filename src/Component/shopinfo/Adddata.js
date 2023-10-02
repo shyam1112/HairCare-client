@@ -14,7 +14,7 @@ function Adddata() {
         e.preventDefault();
        console.log(shopname,owner,mobilenumber,address);
        try {
-        const response = await fetch('http://localhost:4000/addshopdata', {
+        const response = await fetch('https://haircare.onrender.com/addshopdata', {
           method: 'POST',
           body: JSON.stringify({userId,shopname,owner,mobilenumber,address}),
           headers: {

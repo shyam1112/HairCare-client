@@ -59,7 +59,7 @@ const Shopreg = () => {
             });
         } else {
             try {
-                const response = await fetch('http://localhost:4000/shopreg', {
+                const response = await fetch('https://haircare.onrender.com/shopreg', {
                     method: 'POST',
                     body: JSON.stringify({ name, email, pass }),
                     headers: {
