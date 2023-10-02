@@ -13,7 +13,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className='rott'>
         <div className='shopimage'>
             <div className='image'>
             <img src={shop} alt='image' />

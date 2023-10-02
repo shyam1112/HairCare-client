@@ -1,3 +1,7 @@
+.rott{
+    margin: auto;
+}
+
 .shopimage{
    margin-left: 10em;
     margin-top: 4em;
@@ -6,6 +10,7 @@
     border-radius: 40px;
     align-items: center;
     flex-direction: row;
+    margin-right: 0em;
 }
 .shopimage .image{
     padding: 50px;
@@ -24,10 +29,13 @@ body{
 
 
 @media  screen  and (max-width:768px){
+    .rott{
+        max-width: 60%;
+    }
     .shopimage{
-        flex-direction: column  ;
-        margin-left: 1rem;
-        margin-top: 5em;
+        max-width: 90%;
+        flex-direction: column ;
+        margin: 1.5em auto !important;
         background-color: rgb(111, 160, 160);
         display: inline-block;
         margin-right: 2em;
@@ -48,3 +56,6 @@ body{
         margin-left: 0.2rem;
     }
 }
+
+
+
