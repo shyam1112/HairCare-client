@@ -23,3 +23,12 @@
       height: 40px;
     }
 }
+@media screen and (max-width: 900px){
+  .shopitem {
+    margin-right: 11em;
+    margin-left: 0.5em;
+  }
+  .shopitem ul{
+    padding-left: 0em;
+  }
+}
