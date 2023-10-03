@@ -1,0 +1,30 @@
+.shopdata-main{
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.alertt{
+    background-color: rgb(192, 192, 255);
+    padding: 1em;
+    border-radius: 10px;
+margin-bottom: 2em;
+}
+.alertt  p{
+    display: inline;
+}
+.faltu{
+    display: inline;
+}
+.accept-req-btn{
+    width: 220px;
+    padding: 5px;
+    flex-direction: row;
+    margin-left: 65%;display: inline;
+}
+.accept-req-btn button{
+    padding: 5px;
+    background-color: rgb(10, 13, 20);
+    border-radius: 10px;
+    color: white;
+    width: 180px;
+}
