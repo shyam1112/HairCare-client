@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import './adddata.css'; // Import the CSS file
 import { ToastContainer, toast } from 'react-toastify';
 import Nav from '../Nav/Nav';
+import { useNavigate } from 'react-router-dom';
 
 function Adddata() {
-  
+  const navigate=useNavigate();
     const [owner,setOwner] = useState('');
     const [shopname,setShopname]=useState('');
     const [mobilenumber,setmobilenumber]=useState('');
@@ -12,7 +13,7 @@ function Adddata() {
     const userId=localStorage.getItem('userid');
     const handleSubmit=async(e)=>{
         e.preventDefault();
-       console.log(shopname,owner,mobilenumber,address);
+      //  console.log(shopname,owner,mobilenumber,address);
        try {
         const response = await fetch('https://haircare.onrender.com/addshopdata', {
           method: 'POST',
@@ -26,6 +27,9 @@ function Adddata() {
             toast.success("Data added Successfully..done 😃!", {
                 position: "top-center"
             });
+            setTimeout(()=>{
+              navigate('/shopdata');
+            },'2000');
         //   console.log('Data sent successfully');
         } else {
             toast.error("Data added failed. Please try again later.", {
@@ -53,7 +57,7 @@ function Adddata() {
             id="name"
             name="name"
             value={owner}
-            onChange={(e)=>setOwner(e.target.value)}
+            onChange={(e)=>setOwner(e.target.value.toLowerCase())}
             required
           />
         </div>
@@ -75,7 +79,7 @@ function Adddata() {
             id="shopName"
             name="shopName"
             value={shopname}
-            onChange={(e)=>setShopname(e.target.value)}
+            onChange={(e)=>setShopname(e.target.value.toLowerCase())}
             required
           />
         </div>
@@ -85,7 +89,7 @@ function Adddata() {
             id="address"
             name="address"
             value={address}
-            onChange={(e)=>setAddress(e.target.value)}
+            onChange={(e)=>setAddress(e.target.value.toLowerCase())}
             required
           ></textarea>
         </div>

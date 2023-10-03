@@ -8,21 +8,29 @@ function Cushome() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [hour, setHour] = useState(10);
-  const [minute, setMinute] = useState(0);
-  const [ampm, setAmPm] = useState('AM');
+  const [time, setTime] = useState({
+    hour: 10,
+    minute: 0,
+    ampm: 'AM',
+  });
 
   const onChangeHour = (event) => {
-    setHour(parseInt(event.target.value));
+    const newHour = parseInt(event.target.value);
+    setTime({ ...time, hour: newHour });
   };
 
   const onChangeMinute = (event) => {
-    setMinute(parseInt(event.target.value));
+    const newMinute = parseInt(event.target.value);
+    setTime({ ...time, minute: newMinute });
   };
 
   const onChangeAmPm = (event) => {
-    setAmPm(event.target.value);
+    const newAmPm = event.target.value;
+    setTime({ ...time, ampm: newAmPm });
   };
+
+  // Now 'time' contains all three values in a single object
+
 
   useEffect(() => {
     getData();
@@ -45,7 +53,7 @@ function Cushome() {
   };
 
   const searchdata = async (event) => {
-    let key = event.target.value;
+    let key = event.target.value.toLowerCase();
     if (key) {
       let result = await fetch(`https://haircare.onrender.com/search/${key}`);
       result = await result.json();
@@ -56,6 +64,11 @@ function Cushome() {
       getData();
     }
   };
+
+  const sendreq=()=>{
+    const timee =time.hour+':'+time.minute+':'+time.ampm
+    console.log(timee);
+  }
 
   return (
     <div>
@@ -78,13 +91,14 @@ function Cushome() {
                     <Accordion.Header>Shop Name : {item.shopname}</Accordion.Header>
                     <Accordion.Body>
                       <p>Owner : {item.owner}</p>
+                      <p>Id : {item.userId}</p>
                       <p>Mobile Number : {item.mobilenumber}</p>
                       <p>Address : {item.address}</p>
                       <div className='timepicker'>
                         {/* Time Picker */}
                         <label>
                           Select Time : &nbsp;
-                          <select value={hour} onChange={onChangeHour}>
+                          <select value={time.hour} onChange={onChangeHour}>
                             {Array.from({ length: 12 }).map((_, index) => (
                               <option key={index} value={index + 1}>
                                 {index + 1}
@@ -94,7 +108,7 @@ function Cushome() {
                         </label>
                         <span>:</span>
                         <label>
-                          <select value={minute} onChange={onChangeMinute}>
+                          <select value={time.minute} onChange={onChangeMinute}>
                             {Array.from({ length: 4 }).map((_, index) => (
                               <option key={index} value={index * 15}>
                                 {index * 15}
@@ -103,14 +117,14 @@ function Cushome() {
                           </select>
                         </label>
                         <label>
-                        &nbsp; <select value={ampm} onChange={onChangeAmPm}>
+                        &nbsp; <select value={time.ampm} onChange={onChangeAmPm}>
                             <option value='AM'>AM</option>
                             <option value='PM'>PM</option>
                           </select>
                         </label>
                       </div>
                       <div className='btnreq'>
-                        <button>Send request</button>{' '}
+                        <button onClick={sendreq}>Send request</button>{' '}
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
