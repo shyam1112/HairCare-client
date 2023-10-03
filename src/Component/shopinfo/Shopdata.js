@@ -17,7 +17,7 @@ function ShopForm() {
 
   const getData = async () => {
     try {
-      let result = await fetch(`http://localhost:4000/getreq/${auth}`);
+      let result = await fetch(`https://haircare.onrender.com/getreq/${auth}`);
       if (!result.ok) {
         throw new Error('Network response was not ok');
       }
@@ -33,7 +33,7 @@ function ShopForm() {
   };
 
   const acceptreq = async (id) => {
-    let result = await fetch(`http://localhost:4000/update/${id}`, {
+    let result = await fetch(`https://haircare.onrender.com/update/${id}`, {
       method: 'put',
       body: JSON.stringify({ reqee: true }),
       headers: {

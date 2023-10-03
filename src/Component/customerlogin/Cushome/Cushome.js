@@ -77,7 +77,7 @@ const navigate=useNavigate();
     const timee =time.hour+':'+time.minute+':'+time.ampm;
     const reqee=false;
     try {
-      const response = await fetch('http://localhost:4000/sendreq', {
+      const response = await fetch('https://haircare.onrender.com/sendreq', {
         method: 'POST',
         body: JSON.stringify({userId,timee,reqee}),
         headers: {
@@ -112,7 +112,7 @@ const navigate=useNavigate();
 
     setTimeout(async () => {
       try {
-        let result = await fetch(`http://localhost:4000/accept/${idd}`);
+        let result = await fetch(`https://haircare.onrender.com/accept/${idd}`);
         if (!result.ok) {
           throw new Error('Network response was not ok');
         }
