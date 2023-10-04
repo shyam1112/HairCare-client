@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-function ShopItem({ item,name}) {
+function ShopItem({ item, name }) {
   const [requestSent, setRequestSent] = useState(false);
   const [rsp, setRsp] = useState('Best of luck');
   const [time, setTime] = useState({ hour: 10, minute: 0, ampm: 'AM' });
@@ -32,14 +32,14 @@ function ShopItem({ item,name}) {
       alert('Enter Name');
       return; // Exit the function without making the API request
     }
-   
+
     let idd = '';
     const timee = time.hour + ':' + time.minute + ':' + time.ampm;
     const reqee = false;
     try {
       const response = await fetch('https://haircare.onrender.com/sendreq', {
         method: 'POST',
-        body: JSON.stringify({ userId,name,timee, reqee }),
+        body: JSON.stringify({ userId, name, timee, reqee }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -87,56 +87,58 @@ function ShopItem({ item,name}) {
 
   return (
     <div>
-      <Accordion.Item eventKey={item._id}  className='text-bg-light'>
+      <Accordion.Item eventKey={item._id} className='text-bg-light'>
         <Accordion.Header>Shop Name : {item.shopname}</Accordion.Header>
-        <Accordion.Body  className='text-bg-light'>
+        <Accordion.Body className='text-bg-light'>
           <p>Owner : {item.owner}</p>
           {/* <p>Id : {item._id}</p> */}
           <p>Mobile Number : {item.mobilenumber}</p>
           <p>Address : {item.address}</p>
           <p>
-          <div className='timepicker'>
-            {/* Time Picker */}
-            <label>
-              Select Time : &nbsp;
-              <select value={time.hour} onChange={onChangeHour}>
-                {Array.from({ length: 12 }).map((_, index) => (
-                  <option key={index} value={index + 1}>
-                    {index + 1}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <span>:</span>
-            <label>
-              <select value={time.minute} onChange={onChangeMinute}>
-                {Array.from({ length: 4 }).map((_, index) => (
-                  <option key={index} value={index * 15}>
-                    {index * 15}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label>
-              &nbsp;{' '}
-              <select value={time.ampm} onChange={onChangeAmPm}>
-                <option value='AM'>AM</option>
-                <option value='PM'>PM</option>
-              </select>
-            </label>
-          </div>
+            <div className='timepicker'>
+              {/* Time Picker */}
+              <label>
+                Select Time : &nbsp;
+                <select value={time.hour} onChange={onChangeHour}>
+                  {Array.from({ length: 12 }).map((_, index) => (
+                    <option key={index} value={index + 1}>
+                      {index + 1}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <span>:</span>
+              <label>
+                <select value={time.minute} onChange={onChangeMinute}>
+                  {Array.from({ length: 4 }).map((_, index) => (
+                    <option key={index} value={index * 15}>
+                      {index * 15}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                &nbsp;{' '}
+                <select value={time.ampm} onChange={onChangeAmPm}>
+                  <option value='AM'>AM</option>
+                  <option value='PM'>PM</option>
+                </select>
+              </label>
+            </div>
           </p>
           {requestSent ? (
             'Waiting..'
           ) : (
             <div className='btnreq'>
-              <Button variant="primary"onClick={() => sendreq(item.userId)} >Send Request</Button>{' '}
+              {rsp !== 'Confirm' ?
+                <Button variant="primary" onClick={() => sendreq(item.userId)} >Send Request</Button>:''
+            }
               {/* <button style={{ backgroundColor: rsp === 'Confirm' ? 'green' : 'red', color: 'white' }}> */}
               {
-                rsp === 'Confirm'?
-              <Button variant="success" style={{ backgroundColor:'green', color: 'white' }}>Confirm</Button>:" "
+                rsp === 'Confirm' ?
+                  <p style={{ backgroundColor: 'green', color: 'white', textAlign: 'center', opacity: '0.5', width: '100%' }}>Confirm</p> : " "
               }
-                {/* {rsp} */}
+              {/* {rsp} */}
               {/* </button>{' '} */}
             </div>
           )}
@@ -150,7 +152,7 @@ function Cushome() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [name,setName]=useState('');
+  const [name, setName] = useState('');
 
   useEffect(() => {
     getData();
@@ -190,7 +192,7 @@ function Cushome() {
       <Cusnavbar />
       <div className='cushome'>
         <div className='searchbar'>
-          <Form.Control type="text" data-bs-theme="dark" className='w-50 p-3 username' placeholder="Your Sweet Name" onChange={(e)=>setName(e.target.value)} />
+          <Form.Control type="text" data-bs-theme="dark" className='w-50 p-3 username' placeholder="Your Sweet Name" onChange={(e) => setName(e.target.value)} />
           <input type='text' className='search' placeholder='Search the shop' onChange={searchdata} />
         </div>
         <hr />
@@ -203,7 +205,7 @@ function Cushome() {
             data.map((item) => (
               <ul key={item._id}>
                 <Accordion className='text-bg-light'>
-                  <ShopItem item={item} name={name}/>
+                  <ShopItem item={item} name={name} />
                 </Accordion>
               </ul>
             ))
