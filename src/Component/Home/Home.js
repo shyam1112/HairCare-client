@@ -19,8 +19,8 @@ export default function Home() {
             <img src={shop} alt='image' />
             </div>
             <div className='btn'>
-            <Button variant="primary"  onClick={cuslogin} style={{marginTop:'7em',display:'block',width:'300px',alignItems:'center'}}>Log In as a Customer</Button>
-            <Button variant="primary" onClick={shoplogin}  style={{marginTop:'2em',width:'300px',alignItems:'center',marginBottom:'2em'}}>Log In as a Shopkeeper</Button>
+            <Button variant="primary"  onClick={cuslogin} style={{marginTop:'7em',display:'block',width:'95%',alignItems:'center'}}>As a Customer    </Button>
+            <Button variant="primary" onClick={shoplogin}  style={{marginTop:'2em',width:'95%',alignItems:'center',marginBottom:'2em'}}>As a Shopkeeper</Button>
             </div>
         </div>
     </div>

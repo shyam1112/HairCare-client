@@ -4,6 +4,8 @@ import './cushome.css';
 import Accordion from 'react-bootstrap/Accordion';
 import { ToastContainer, toast } from 'react-toastify';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 
 function ShopItem({ item,name}) {
   const [requestSent, setRequestSent] = useState(false);
@@ -128,10 +130,14 @@ function ShopItem({ item,name}) {
             'Waiting..'
           ) : (
             <div className='btnreq'>
-              <button onClick={() => sendreq(item.userId)}>Send request</button>{' '}
-              <button style={{ backgroundColor: rsp === 'Confirm' ? 'green' : 'red', color: 'white' }}>
-                {rsp}
-              </button>{' '}
+              <Button variant="primary"onClick={() => sendreq(item.userId)} >Send Request</Button>{' '}
+              {/* <button style={{ backgroundColor: rsp === 'Confirm' ? 'green' : 'red', color: 'white' }}> */}
+              {
+                rsp === 'Confirm'?
+              <Button variant="success" style={{ backgroundColor:'green', color: 'white' }}>Confirm</Button>:" "
+              }
+                {/* {rsp} */}
+              {/* </button>{' '} */}
             </div>
           )}
         </Accordion.Body>

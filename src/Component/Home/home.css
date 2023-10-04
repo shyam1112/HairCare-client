@@ -3,7 +3,7 @@
 }
 
 .shopimage{
-   margin-left: 10em;
+   margin-left: 25%;
     margin-top: 4em;
     background-color: rgb(161, 219, 219);
     display: inline-flex;
@@ -26,23 +26,24 @@ body{
     background-color: rgb(246, 246, 246);
     border-radius: 20px;
 }
-
+.btn button{
+    width: 150%;
+}
 
 @media  screen  and (max-width:768px){
     .rott{
         max-width: 60%;
     }
     .shopimage{
-        max-width: 90%;
+        max-width: 130%;
         flex-direction: column ;
-        margin: 1.5em auto !important;
         background-color: rgb(111, 160, 160);
         display: inline-block;
-        margin-right: 2em;
         border-radius: 20px;
+        margin-left: -23%;
     }
     .shopimage img{
-        width: 300px;
+        width: 95%;
         border-radius: 20px;
         padding: 0em;
         margin: 0.5em;
@@ -54,6 +55,10 @@ body{
     .btn{
         margin-top: -6em;
         margin-left: 0.2rem;
+        width: 95%;
+    }
+    .btn button{
+        width: 95%;
     }
 }
 

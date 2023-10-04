@@ -10,6 +10,8 @@ function ShopForm() {
 
   const auth = localStorage.getItem('userid');
 
+  const [acceptedRequests, setAcceptedRequests] = useState([]);
+
   const fetchData = async () => {
     try {
       let result = await fetch(`https://haircare.onrender.com/getreq/${auth}`);
@@ -40,6 +42,7 @@ function ShopForm() {
         position: 'top-center'
       });
       // fetchData();
+      setAcceptedRequests([...acceptedRequests, id]);
     } catch (error) {
       console.error('Error in accepting request:', error);
     }
@@ -63,9 +66,9 @@ function ShopForm() {
   };
 
   useEffect(() => {
-    fetchData(); 
+    fetchData();
 
-    const pollInterval = 3000; 
+    const pollInterval = 3000;
     const pollTimer = setInterval(fetchData, pollInterval);
 
     return () => clearInterval(pollTimer);
@@ -88,7 +91,16 @@ function ShopForm() {
                   &nbsp; &nbsp; &nbsp; &nbsp;
                   <p>{item.timee}</p>
                   <div className='accept-req-btn'>
-                    <button onClick={() => acceptreq(item._id)}>Accept Request</button>
+                    {!acceptedRequests.includes(item._id) ? (
+                      <button onClick={() => acceptreq(item._id)}>Accept Request</button>
+                    ):(
+                      <button
+                      onClick={() => deletereq(item._id)}
+                      style={{ backgroundColor: 'green', marginLeft: '15px', width: '80px' }}
+                    >
+                      Done
+                    </button>
+                    )}                    
                     <button
                       onClick={() => deletereq(item._id)}
                       style={{ backgroundColor: 'red', marginLeft: '15px', width: '80px' }}
