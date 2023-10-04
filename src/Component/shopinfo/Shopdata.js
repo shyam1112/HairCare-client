@@ -47,6 +47,19 @@ function ShopForm() {
   });
   }
 
+  const deletereq=async(id)=>{
+    let result=await fetch(`https://haircare.onrender.com/deletereq/${id}`,{
+      method:'delete'
+    });
+    result = await result.json();
+    if(result){
+      toast.dark("Deleted..",{
+        position:"top-center" 
+      })
+    }
+    getData();
+  }
+
   return (
     <div>
       <Nav />
@@ -66,6 +79,8 @@ function ShopForm() {
                   <p>{item.timee}</p>
                   <div className='accept-req-btn'>
                     <button onClick={()=> acceptreq(item._id)}>Accept Request</button>
+                    <button onClick={()=> deletereq(item._id)} style={{backgroundColor:'red',marginLeft:'15px',width:'80px'}}>Delete</button>
+
                   </div>
                 </ul>
 
