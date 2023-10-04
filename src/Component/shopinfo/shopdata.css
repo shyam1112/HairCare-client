@@ -19,7 +19,7 @@ margin-bottom: 2em;
     width: 220px;
     padding: 5px;
     flex-direction: row;
-    margin-left: 65%;display: inline;
+    margin-left: 45%;display: inline;
 }
 .accept-req-btn button{
     padding: 5px;
@@ -27,4 +27,20 @@ margin-bottom: 2em;
     border-radius: 10px;
     color: white;
     width: 180px;
+}
+@media screen and (max-width:800px) {
+
+    .faltu{
+        flex-direction: column;
+        display: block;
+        margin: 0%;
+    }
+    .accept-req-btn{
+        width: 220px;
+        padding: 0px;
+        flex-direction: row;
+        margin-left: -1%;
+        display: inline-flex;
+        margin-top: 1em;
+    }
 }

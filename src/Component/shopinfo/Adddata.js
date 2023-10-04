@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './adddata.css'; // Import the CSS file
 import { ToastContainer, toast } from 'react-toastify';
-import Nav from '../Nav/Nav';
+import Nav from '../Nav/Navv';
 import { useNavigate } from 'react-router-dom';
 
 function Adddata() {

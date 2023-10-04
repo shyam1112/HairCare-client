@@ -5,7 +5,7 @@ import Home from './Component/Home/Home'
 import Shoplogin from './Component/shopkeeperlogin/Shoplogin';
 import Shopreg from './Component/shopkeeperlogin/Shopreg'
 import Shopdata from './Component/shopinfo/Shopdata';
-import Nav from './Component/Nav/Nav';
+import Nav from './Component/Nav/Navv';
 import Pvtcontex from './Component/context/Pvtcontex';
 import Adddata from './Component/shopinfo/Adddata';
 import Profile from './Component/profile/Profile';

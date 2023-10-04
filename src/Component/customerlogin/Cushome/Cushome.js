@@ -3,9 +3,9 @@ import Cusnavbar from '../Navbar/Cusnavbar';
 import './cushome.css';
 import Accordion from 'react-bootstrap/Accordion';
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
 
-function ShopItem({ item }) {
+function ShopItem({ item,name}) {
   const [requestSent, setRequestSent] = useState(false);
   const [rsp, setRsp] = useState('Best of luck');
   const [time, setTime] = useState({ hour: 10, minute: 0, ampm: 'AM' });
@@ -26,13 +26,18 @@ function ShopItem({ item }) {
   };
 
   const sendreq = async (userId) => {
+    if (name.trim() === '') {
+      alert('Enter Name');
+      return; // Exit the function without making the API request
+    }
+   
     let idd = '';
     const timee = time.hour + ':' + time.minute + ':' + time.ampm;
     const reqee = false;
     try {
       const response = await fetch('https://haircare.onrender.com/sendreq', {
         method: 'POST',
-        body: JSON.stringify({ userId, timee, reqee }),
+        body: JSON.stringify({ userId,name,timee, reqee }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -75,7 +80,7 @@ function ShopItem({ item }) {
       } finally {
         setRequestSent(false);
       }
-    }, 10000);
+    }, 15000);
   };
 
   return (
@@ -87,6 +92,7 @@ function ShopItem({ item }) {
           <p>Id : {item._id}</p>
           <p>Mobile Number : {item.mobilenumber}</p>
           <p>Address : {item.address}</p>
+          <p>
           <div className='timepicker'>
             {/* Time Picker */}
             <label>
@@ -117,6 +123,7 @@ function ShopItem({ item }) {
               </select>
             </label>
           </div>
+          </p>
           {requestSent ? (
             'Waiting..'
           ) : (
@@ -137,6 +144,7 @@ function Cushome() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [name,setName]=useState('');
 
   useEffect(() => {
     getData();
@@ -176,6 +184,7 @@ function Cushome() {
       <Cusnavbar />
       <div className='cushome'>
         <div className='searchbar'>
+          <Form.Control type="text" data-bs-theme="dark" className='w-50 p-3 username' placeholder="Your Sweet Name" onChange={(e)=>setName(e.target.value)} />
           <input type='text' className='search' placeholder='Search the shop' onChange={searchdata} />
         </div>
         <hr />
@@ -187,8 +196,8 @@ function Cushome() {
           ) : data && data.length > 0 ? (
             data.map((item) => (
               <ul key={item._id}>
-                <Accordion>
-                  <ShopItem item={item} />
+                <Accordion data-bs-theme="dark">
+                  <ShopItem item={item} name={name}/>
                 </Accordion>
               </ul>
             ))

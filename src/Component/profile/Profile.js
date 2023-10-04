@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Nav from '../Nav/Nav';
+import Nav from '../Nav/Navv';
 import './profile.css';
 export default function Profile() {
 

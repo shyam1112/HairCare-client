@@ -1,28 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import './shopdata.css'; // Import the CSS file
 import { ToastContainer, toast } from 'react-toastify';
-import Nav from '../Nav/Nav';
+import Navv from '../Nav/Navv';
 
 function ShopForm() {
-
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    getData();
-  }, []);
-
   const auth = localStorage.getItem('userid');
 
-  const getData = async () => {
+  const fetchData = async () => {
     try {
       let result = await fetch(`https://haircare.onrender.com/getreq/${auth}`);
       if (!result.ok) {
         throw new Error('Network response was not ok');
       }
       result = await result.json();
-      // console.log(result);
       setData(result);
       setIsLoading(false);
     } catch (error) {
@@ -33,38 +27,54 @@ function ShopForm() {
   };
 
   const acceptreq = async (id) => {
-    let result = await fetch(`https://haircare.onrender.com/update/${id}`, {
-      method: 'put',
-      body: JSON.stringify({ reqee: true }),
-      headers: {
-        'content-type': 'application/json'
-      },
-    })
-    result = await result.json();
-    // console.log(result);
-    toast.success("Request accept..😃!", {
-      position: "top-center"
-  });
-  }
-
-  const deletereq=async(id)=>{
-    let result=await fetch(`https://haircare.onrender.com/deletereq/${id}`,{
-      method:'delete'
-    });
-    result = await result.json();
-    if(result){
-      toast.dark("Deleted..",{
-        position:"top-center" 
-      })
+    try {
+      let result = await fetch(`https://haircare.onrender.com/update/${id}`, {
+        method: 'put',
+        body: JSON.stringify({ reqee: true }),
+        headers: {
+          'content-type': 'application/json'
+        },
+      });
+      result = await result.json();
+      toast.success('Request accepted..😃!', {
+        position: 'top-center'
+      });
+      // fetchData();
+    } catch (error) {
+      console.error('Error in accepting request:', error);
     }
-    getData();
-  }
+  };
+
+  const deletereq = async (id) => {
+    try {
+      let result = await fetch(`https://haircare.onrender.com/deletereq/${id}`, {
+        method: 'delete'
+      });
+      result = await result.json();
+      if (result) {
+        fetchData();
+        toast.dark('Deleted..', {
+          position: 'top-center'
+        });
+      }
+    } catch (error) {
+      console.error('Error in deleting request:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(); 
+
+    const pollInterval = 3000; 
+    const pollTimer = setInterval(fetchData, pollInterval);
+
+    return () => clearInterval(pollTimer);
+  }, []);
 
   return (
     <div>
-      <Nav />
+      <Navv />
       <div className='shopdata-main'>
-
         {isLoading ? (
           <div>Loading...</div>
         ) : error ? (
@@ -74,28 +84,27 @@ function ShopForm() {
             <div className='alertt'>
               <div className='faltu'>
                 <ul key={item._id}>
-                  <p>{item._id}</p>
-                  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+                  <p>{item.name}</p>
+                  &nbsp; &nbsp; &nbsp; &nbsp;
                   <p>{item.timee}</p>
                   <div className='accept-req-btn'>
-                    <button onClick={()=> acceptreq(item._id)}>Accept Request</button>
-                    <button onClick={()=> deletereq(item._id)} style={{backgroundColor:'red',marginLeft:'15px',width:'80px'}}>Delete</button>
-
+                    <button onClick={() => acceptreq(item._id)}>Accept Request</button>
+                    <button
+                      onClick={() => deletereq(item._id)}
+                      style={{ backgroundColor: 'red', marginLeft: '15px', width: '80px' }}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </ul>
-
               </div>
             </div>
           ))
         ) : (
           <div>No data available</div>
         )}
-
-
-<ToastContainer/>
-
+        <ToastContainer />
       </div>
-
     </div>
   );
 }

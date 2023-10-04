@@ -13,6 +13,14 @@
     border-radius: 30px;
    }
   
+   .username{
+    width: 40%;
+    align-items: center;
+    display: flex;
+    margin-left: 23%;
+    padding: 10px;
+   }
+
 .shopitem{
   max-width: 84%;
 }
@@ -30,10 +38,11 @@
   @media (max-width: 768px) {
     /* Apply these styles for screens with a minimum width of 768px (tablets and larger) */
     .search {
-      margin-left: 50px; /* Restore the original margin */
+      margin-left: 21%; /* Restore the original margin */
       width: 16rem ;/* Restore the original width */
       display: inline-block; /* Restore the original flex direction */
       height: 40px;
+      margin-bottom:25px;
     }
 }
 @media screen and (max-width: 900px){
