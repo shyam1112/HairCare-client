@@ -35,7 +35,7 @@ body{
         max-width: 60%;
     }
     .shopimage{
-        max-width: 130%;
+        width: 144%;
         flex-direction: column ;
         background-color: rgb(111, 160, 160);
         display: inline-block;
