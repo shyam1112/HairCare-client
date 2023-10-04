@@ -91,7 +91,7 @@ function ShopItem({ item,name}) {
         <Accordion.Header>Shop Name : {item.shopname}</Accordion.Header>
         <Accordion.Body  className='text-bg-light'>
           <p>Owner : {item.owner}</p>
-          <p>Id : {item._id}</p>
+          {/* <p>Id : {item._id}</p> */}
           <p>Mobile Number : {item.mobilenumber}</p>
           <p>Address : {item.address}</p>
           <p>

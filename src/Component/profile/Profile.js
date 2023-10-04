@@ -49,7 +49,7 @@ export default function Profile() {
                             <div className="coontainer">
                                 <h4><b><i>Hi! </i></b></h4>
                                 <h4><b><i>Shopname: {data[0].shopname}</i></b></h4>
-                                <p> userId : {data[0].userId}</p>
+                                {/* <p> userId : {data[0].userId}</p> */}
                                 <p> owner : {data[0].owner}</p>
                                 <p> mobilenumber : {data[0].mobilenumber}</p>
                                 <p> address : {data[0].address}</p>
