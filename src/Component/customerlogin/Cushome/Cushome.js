@@ -87,9 +87,9 @@ function ShopItem({ item,name}) {
 
   return (
     <div>
-      <Accordion.Item eventKey={item._id}>
+      <Accordion.Item eventKey={item._id}  className='text-bg-light'>
         <Accordion.Header>Shop Name : {item.shopname}</Accordion.Header>
-        <Accordion.Body>
+        <Accordion.Body  className='text-bg-light'>
           <p>Owner : {item.owner}</p>
           <p>Id : {item._id}</p>
           <p>Mobile Number : {item.mobilenumber}</p>
@@ -202,7 +202,7 @@ function Cushome() {
           ) : data && data.length > 0 ? (
             data.map((item) => (
               <ul key={item._id}>
-                <Accordion data-bs-theme="dark">
+                <Accordion className='text-bg-light'>
                   <ShopItem item={item} name={name}/>
                 </Accordion>
               </ul>
